@@ -1,12 +1,11 @@
 amcl:
   ros__parameters:
-    use_sim_time: True
     alpha1: 0.2
     alpha2: 0.2
     alpha3: 0.2
     alpha4: 0.2
     alpha5: 0.2
-    base_frame_id: "base_footprint"
+    base_frame_id: "base_link"
     beam_skip_distance: 0.5
     beam_skip_error_threshold: 0.9
     beam_skip_threshold: 0.3
@@ -38,15 +37,23 @@ amcl:
     z_rand: 0.5
     z_short: 0.05
     scan_topic: scan
+    map_topic: map
+    set_initial_pose: false
+    always_reset_initial_pose: false
+    first_map_only: false
+    initial_pose:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      yaw: 0.0
 
 amcl_map_client:
   ros__parameters:
-    use_sim_time: True
+    use_sim_time: True              # シミュレーション時間を使用するかどうか
 
 amcl_rclcpp_node:
   ros__parameters:
-    use_sim_time: True
-
+    use_sim_time: True              # シミュレーション時間を使用するかどうか
 bt_navigator:
   ros__parameters:
     use_sim_time: True
