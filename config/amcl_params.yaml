@@ -1,0 +1,58 @@
+amcl:
+  ros__parameters:
+    use_sim_time: True  # シミュレーション時間を使用するかどうか
+    alpha1: 0.2         # ロボットの動きの回転成分から、オドメトリの回転推定で予想されるノイズを指定します。
+    alpha2: 0.2         # ロボットの動きの並進成分から、オドメトリの回転推定で予想されるノイズを指定します。
+    alpha3: 0.2         # ロボットの動きの並進コンポーネントから、オドメトリの並進推定で予想されるノイズを指定します。
+    alpha4: 0.2         # ロボットの動きの回転成分から、オドメトリの並進推定で予想されるノイズを指定します。
+    alpha5: 0.2         # 平行移動関連のノイズ パラメータ (モデルが"omni"(オムニホイール)の場合のみ使用)。
+    base_frame_id: "base_link" # ロボットベースフレーム
+    beam_skip_distance: 0.5         # 位置しないビームを無視する最大距離(m)
+    beam_skip_error_threshold: 0.9  # 位置推定が収束しない場合の一致しないビームの割合
+    beam_skip_threshold: 0.3        # sスキップに必要なビームのパーセンテージ
+    do_beamskip: false              # ビームスキップを行うかどうか
+    global_frame_id: "map"          # amcl で発行されるトピック名称
+    lambda_short: 0.1
+    laser_likelihood_max_dist: 2.0  # map 上で障害物を観測する最大距離(障害物のサイズ?)
+    laser_max_range: 100.0          # 最大スキャン範囲
+    laser_min_range: -1.0           # 最小スキャン範囲、-1でURDFより引用？
+    laser_model_type: "likelihood_field"  # beam, likelihood_field, or likelihood_field_prob
+    set_initial_pose: False         # ロボットの初期姿勢を .yaml で指定するかどうか
+    initial_pose: {x: 0.0, y: 0.0, z: 0.0, yaw: 0.0}  # 初期姿勢
+    max_beams: 60                   # フィルタ更新時の使用するビームの数
+    max_particles: 2000             # パーティクルの最大許容数
+    min_particles: 50               # 最小許容数
+    odom_frame_id: "odom"           # オドメトリトピック    
+    pf_err: 0.05                    # パーティクルフィルタのエラー値
+    pf_z: 0.99                      # パーティクルフィルタの密度
+    recovery_alpha_fast: 0.0        # リカバリタイミングを決める？
+    recovery_alpha_slow: 0.0        # リカバリタイミングを決める？
+    resample_interval: 1            # リカバリタイミングを決める？
+    robot_model_type: "nav2_amcl::DifferentialMotionModel"  # galacticはnav2_amcl::DifferentialMotionModel or nav2_amcl::OmniMotionModel
+    save_pose_rate: 0.5             # 最後に推定されたポーズを保存する周期(Hz)、初期化時に呼び出し
+    sigma_hit: 0.2                  # ガウス モデルの標準偏差
+    tf_broadcast: true              # map - odom 間の変換を行うかどうか
+    transform_tolerance: 1.0        # 変換したタイムスタンプを更新する間隔(s)
+    update_min_a: 0.2               # フィルタ更新時の最小回転運動量
+    update_min_d: 0.25              # フィルタ更新時の最小並進運動量
+    z_hit: 0.5                      # 重み
+    z_max: 0.05                     # 重み
+    z_rand: 0.5                     # 重み
+    z_short: 0.05                   # 重み
+    scan_topic: scan                # サブスクライブするスキャントピック
+    map_topic: map
+    set_initial_pose: false
+    always_reset_initial_pose: false
+    first_map_only: false
+    initial_pose:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      yaw: 0.0
+amcl_map_client:
+  ros__parameters:
+    use_sim_time: True              # シミュレーション時間を使用するかどうか
+
+amcl_rclcpp_node:
+  ros__parameters:
+    use_sim_time: True              # シミュレーション時間を使用するかどうか
